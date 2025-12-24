@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEEKR Kazakhstan | Инновациялық Электр Көліктері</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+         :root {
+            --accent: #c5a059;
+            --black: #0a0a0b;
+            --white: #ffffff;
+            --gray-text: #86868b;
+            --light-gray: #f5f5f7;
+            --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--white);
+            color: var(--black);
+            /* Мәтін үшін Inter шрифті */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        /* Тақырыптар үшін Montserrat шрифті */
+        
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+        /* --- PRELOADER --- */
+        
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--black);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .loader-logo {
+            color: var(--white);
+            font-size: 24px;
+            letter-spacing: 12px;
+            font-weight: 900;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.95);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* --- NAVIGATION --- */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 35px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(25px);
+            padding: 18px 6%;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        /* --- HERO SECTION --- */
+        
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            transform: scale(1.05);
+        }
+        
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 8%;
+            max-width: 1000px;
+        }
+        
+        .hero-content span {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(48px, 8vw, 90px);
+            line-height: 1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            font-weight: 300;
+            max-width: 550px;
+            margin-bottom: 45px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+        
+        .btn-premium {
+            padding: 20px 45px;
+            border-radius: 2px;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            display: inline-block;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .btn-premium:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+        /* --- MODELS SECTION --- */
+        
+        .section {
+            padding: 140px 6%;
+        }
+        
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            text-align: center;
+            color: var(--gray-text);
+            font-size: 16px;
+            margin-bottom: 80px;
+        }
+        
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+        
+        .model-card {
+            position: relative;
+            height: 680px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--light-gray);
+            transition: var(--transition);
+        }
+        
+        .model-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 2s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        
+        .model-card:hover img {
+            transform: scale(1.08);
+        }
+        
+        .model-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 50px;
+            color: white;
+        }
+        
+        .model-overlay h3 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .model-overlay p {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        /* --- FEATURES --- */
+        
+        .features {
+            background: #f9f9fb;
+        }
+        
+        .feature-box {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+        }
+        
+        .feature-content h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+        
+        .feature-content p {
+            color: var(--gray-text);
+            font-size: 18px;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .feature-list i {
+            color: var(--accent);
+            font-size: 20px;
+        }
+        
+        .feature-image {
+            flex: 1.2;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 600px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+        /* --- FOOTER --- */
+        
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 100px 8% 50px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 60px;
+        }
+        
+        .footer-col h4 {
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+        
+        .footer-col p {
+            color: #86868b;
+            margin-bottom: 15px;
+            font-size: 14px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .footer-col p:hover {
+            color: var(--white);
+        }
+        /* --- RESPONSIVE --- */
+        
+        @media (max-width: 992px) {
+            .feature-box {
+                flex-direction: column;
+                gap: 50px;
+            }
+            .hero-content h1 {
+                font-size: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div class="loader-logo">ZEEKR</div>
+    </div>
+
+    <nav id="navbar">
+        <a href="#" class="logo">ZEEKR</a>
+        <div class="nav-links">
+            <a href="#models">Модельдер</a>
+            <a href="#tech">Технология</a>
+            <a href="#">Сервис</a>
+            <a href="#">Дилерлер</a>
+        </div>
+        <a href="tel:+77273333333" class="btn-premium" style="padding: 12px 28px; font-size: 11px; background: var(--accent); color: white; border: none;">Тест-Драйв</a>
+    </nav>
+
+    <section class="hero">
+        <div class="overlay"></div>
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="c:\Users\Admin\Downloads\ZEEKR X _ Define Life Your Way.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content" data-aos="fade-up">
+            <span>PREMIUM ELECTRIC MOBILITY</span>
+            <h1>БОЛАШАҚТЫҢ <br>ЭНЕРГИЯСЫ</h1>
+            <p>ZEEKR 001 — жоғары технологиялар мен футуристік дизайнның кемел үйлесімі. Шексіздікке жол ашыңыз.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" class="btn-premium">Конфигуратор</a>
+                <a href="#" class="btn-premium" style="background:transparent; color:white; border: 1px solid white;">Танысу</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="models">
+        <div class="section-header" data-aos="fade-up">
+            <h2>МОДЕЛЬДЕР ҚАТАРЫ</h2>
+            <p>Кемелдікке ұмтылғандар үшін арнайы жасалған көліктер</p>
+        </div>
+
+        <div class="model-grid">
+            <div class="model-card" data-aos="fade-up">
+                <img src="https://www.datocms-assets.com/128969/1751467392-zeekr_001_sportedition_black_3-4_front-1.jpg?auto=format" alt="Zeekr 001">
+                <div class="model-overlay">
+                    <h3>ZEEKR 001</h3>
+                    <p>Sport Shooting Brake</p>
+                    <a href="#" class="btn-premium" style="padding: 12px 30px; font-size: 11px;">Зерттеу</a>
+                </div>
+            </div>
+
+            <div class="model-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://tesla-almaty.kz/upload/images/big/65975_678716_22.jpeg" alt="Zeekr X">
+                <div class="model-overlay">
+                    <h3>ZEEKR X</h3>
+                    <p>Urban Compact SUV</p>
+                    <a href="#" class="btn-premium" style="padding: 12px 30px; font-size: 11px;">Зерттеу</a>
+                </div>
+            </div>
+
+            <div class="model-card" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://miracle-cars.ru/wp-content/uploads/2024/09/IMG_8313.webp" alt="Zeekr 009">
+                <div class="model-overlay">
+                    <h3>ZEEKR 009</h3>
+                    <p>Luxury MPV</p>
+                    <a href="#" class="btn-premium" style="padding: 12px 30px; font-size: 11px;">Зерттеу</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section features" id="tech">
+        <div class="feature-box" data-aos="fade-up">
+            <div class="feature-content">
+                <h2 style="font-family: 'Montserrat';">ИНТЕЛЛЕКТУАЛДЫ <br>DRIVE ЖҮЙЕСІ</h2>
+                <p>Ең заманауи SEA платформасы мен найзағайдай жылдам зарядтау мүмкіндігі сізге еркіндік сыйлайды.</p>
+                <ul class="feature-list">
+                    <li><i class="fa fa-shield-halved"></i> Максималды қауіпсіздік 5*</li>
+                    <li><i class="fa fa-bolt"></i> 800V Жоғары вольтты жүйе</li>
+                    <li><i class="fa fa-microchip"></i> NVIDIA Drive Orin чиптері</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <img src="https://www.datocms-assets.com/128969/1751467392-zeekr_001_sportedition_black_3-4_front-1.jpg?auto=format" alt="Technology" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color:white; margin-bottom: 30px;">ZEEKR</div>
+                <p>Болашақты бүгін таңдаңыз. <br>Қазақстандағы ресми өкілдік.</p>
+            </div>
+            <div class="footer-col">
+                <h4>САТЫП АЛУ</h4>
+                <p>Несие бағдарламасы</p>
+                <p>Trade-in</p>
+                <p>Көліктер жолда</p>
+            </div>
+            <div class="footer-col">
+                <h4>БАЙЛАНЫС</h4>
+                <p>+7 727 333 33 33</p>
+                <p>Алматы қ., Райымбек даңғылы, 115</p>
+                <p>info@zeekr-kz.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>ӘЛЕУМЕТТІК ЖЕЛІ</h4>
+                <div style="display:flex; gap:20px; font-size: 20px;">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-facebook"></i>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 80px; border-top: 1px solid #1c1c1e; padding-top: 30px; font-size: 11px; color: #48484a; display: flex; justify-content: space-between;">
+            <p>© 2025 ZEEKR KAZAKHSTAN. ORBIS AUTO.</p>
+            <p>DESIGNED FOR FUTURE</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        window.onload = () => {
+            setTimeout(() => {
+                const loader = document.getElementById('preloader');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.remove(), 800);
+            }, 800);
+        };
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+    </script>
+</body>
+
+</html>
